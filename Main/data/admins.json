@@ -5,5 +5,12 @@
     "age": "23",
     "email": "Admin@test.com",
     "password": "cGFzc3dvcmQ="
+  },
+  {
+    "first_name": "ff",
+    "last_name": "ff",
+    "age": "2",
+    "email": "nem@gmaIL.com",
+    "password": "ZmFvYm5mbg=="
   }
 ]

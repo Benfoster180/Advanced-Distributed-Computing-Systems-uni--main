@@ -8,7 +8,8 @@ from django.urls import path
 from django.core.management import execute_from_command_line
 from django.template import engines
 from django.views.decorators.csrf import csrf_exempt
-from backend.user import add_user  # Your existing add_user function
+from backend.user import add_user
+from backend.add_admin import add_admin
 
 # --- Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -33,6 +34,22 @@ settings.configure(
     STATIC_URL='/static/',
     STATICFILES_DIRS=[os.path.join(BASE_DIR, 'frontend/static')],
 )
+
+def submit_admin(request):
+    """Handle new admin registration."""
+    if request.method == "POST":
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        age = request.POST.get("age")
+        email = request.POST.get("email")
+        raw_password = request.POST.get("password")
+
+        add_admin(first_name, last_name, age, email, raw_password)
+        return HttpResponseRedirect("/admin_portal/")
+
+    return HttpResponseRedirect("/add_admin/")
+
+
 
 # --- Helper Functions ---
 def decrypt_password(password):
@@ -141,17 +158,29 @@ def submit(request):
 
     return HttpResponseRedirect("/add_user/")
 
+def add_admin_page(request):
+    """Render admin registration page."""
+    django_engine = engines['django']
+    template = django_engine.get_template('add_admin.html')
+    return HttpResponse(template.render())
 
+def admin_portal(request):
+    """Render admin registration page."""
+    django_engine = engines['django']
+    template = django_engine.get_template('admin_portal.html')
+    return HttpResponse(template.render())
 
 # --- URL Patterns ---
 urlpatterns = [
-    path('', index),                   # Home page
+    path('', index),
     path('admin_login/', admin_login),
+    path('admin_portal/', admin_portal),
     path('user_login/', user_login),
     path('store_front/', store_front),
-    path('admin_portal/', admin_portal),  
     path('add_user/', add_user_page),
+    path('add_admin/', add_admin_page),   # New admin registration page
     path('submit/', submit),
+    path('submit_admin/', submit_admin),  # Admin submission
 ]
 
 # --- Run Server ---
