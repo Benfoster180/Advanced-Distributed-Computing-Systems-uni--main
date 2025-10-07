@@ -16,6 +16,9 @@ from backend.add_admin import add_admin
 from backend.remove_users import remove_users_page, remove_user
 from backend.remove_admins import remove_admins_page, remove_admin
 from backend.view_admins import view_admins_page
+from backend.add_game import add_game
+from backend.remove_stock import remove_stock_page, remove_stock
+
 
 # --- Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Points to Main/
@@ -136,6 +139,27 @@ def admin_portal(request):
     template = engines['django'].get_template('admin_portal.html')
     return HttpResponse(template.render())
 
+def add_game_page(request):
+    django_engine = engines['django']
+    template = django_engine.get_template('add_game.html')
+    return HttpResponse(template.render())
+
+def submit_game(request):
+    if request.method == "POST":
+        game_name = request.POST.get("game_name")
+        game_type = request.POST.get("game_type")
+        age_rating = request.POST.get("age_rating")
+        platform = request.POST.get("platform")
+        price_per_day = request.POST.get("price_per_day")
+        cover_url = request.POST.get("cover_url")
+        stock = request.POST.get("stock")
+
+        add_game(game_name, game_type, age_rating, platform, price_per_day, cover_url, stock)
+        return HttpResponse("<h2>Game added successfully!</h2><p><a href='/add_game/'>Add another</a></p>")
+
+    return HttpResponseRedirect("/add_game/")
+
+
 # --- URL Patterns ---
 urlpatterns = [
     path('', index),
@@ -153,6 +177,11 @@ urlpatterns = [
     path('remove_admin/', remove_admin),
     path('view_users/', view_users_page),
     path('view_admins/', view_admins_page),
+    path('add_game/', add_game_page),
+    path('submit_game/', submit_game),
+    path('remove_stock/', remove_stock_page),
+    path('submit_remove_stock/', remove_stock),
+
 
 ]
 

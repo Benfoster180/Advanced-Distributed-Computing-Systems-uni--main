@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Game</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_game.css' %}" />
+  </head>
+  <body>
+    <div class="login-container">
+      <a href="/admin_portal/" class="back-arrow">&#8592; Back</a>
+      <h1>Add Rental Game</h1>
+
+      <form method="POST" action="/submit_game/">
+        {% csrf_token %}
+        <input type="text" name="game_name" placeholder="Game Name" required />
+
+        <input
+          type="text"
+          name="game_type"
+          placeholder="Type of Game"
+          required
+        />
+
+        <input
+          type="number"
+          name="age_rating"
+          placeholder="Age Rating"
+          min="1"
+          max="21"
+          required
+        />
+
+        <select name="platform" required>
+          <option value="" selected disabled>-- Select Platform --</option>
+          <option value="PlayStation 5">PlayStation 5</option>
+          <option value="Xbox Series X|S">Xbox Series X|S</option>
+          <option value="Nintendo Switch">Nintendo Switch</option>
+          <option value="PC">PC</option>
+          <option value="Mobile (iOS/Android)">Mobile (iOS/Android)</option>
+          <option value="Steam Deck">Steam Deck</option>
+          <option value="Meta Quest">Meta Quest</option>
+          <option value="PlayStation VR2">PlayStation VR2</option>
+          <option value="Sega Dreamcast">Sega Dreamcast</option>
+          <option value="PlayStation 2">PlayStation 2</option>
+        </select>
+
+        <input
+          type="number"
+          name="price_per_day"
+          placeholder="Price per day"
+          min="1"
+          required
+        />
+
+        <input
+          type="url"
+          name="cover_url"
+          placeholder="Game Cover URL"
+          required
+        />
+
+        <input
+          type="number"
+          name="stock"
+          placeholder="Stock"
+          min="0"
+          required
+        />
+
+        <input type="submit" value="Add Game" />
+      </form>
+    </div>
+  </body>
+</html>
