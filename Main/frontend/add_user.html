@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_user.css' %}" />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Back arrow -->
+      <a href="/user_login/" class="back-arrow">&#8592; Back</a>
+
+      <h1>User Registration</h1>
+      <form method="POST" action="/submit/">
+        {% csrf_token %}
+
+        <input
+          type="text"
+          name="first_name"
+          placeholder="First Name"
+          required
+        />
+        <input type="text" name="last_name" placeholder="Last Name" required />
+        <input type="number" name="age" placeholder="Age" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+
+        <input type="submit" value="Submit" />
+      </form>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

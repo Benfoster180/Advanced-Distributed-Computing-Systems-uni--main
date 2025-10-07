@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Login</title>
+    <link rel="stylesheet" href="/static/css/user_login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Back arrow -->
+      <a href="/" class="back-arrow">&#8592; Back</a>
+
+      <h1>User Login</h1>
+      <form method="POST">
+        {% csrf_token %}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        /><br /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        /><br /><br />
+        <input type="submit" value="Login" />
+      </form>
+
+      <p>Don't have an account?</p>
+      <a href="/add_user/"><button>Create Account</button></a>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
