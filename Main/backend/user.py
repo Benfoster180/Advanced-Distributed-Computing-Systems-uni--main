@@ -1,13 +1,16 @@
-import json, os, threading, socketserver, time, base64
+import json
+import os
+import base64
+import threading
+import socketserver
+import time
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-user_db = os.path.join(BASE_DIR, 'data', 'user.json')
+user_db = 'Main/data/user.json'
 
 def decrypt_password(password):
     decoded_bytes = base64.b64decode(password)
     decrypted_password = decoded_bytes.decode('utf-8')
     return decrypted_password
-
 
 def add_user(first_name, last_name, age, email, raw_password, path=user_db):
 
@@ -17,11 +20,15 @@ def add_user(first_name, last_name, age, email, raw_password, path=user_db):
         encryprted_password = encode_bytes.decode('utf-8')
         return encryprted_password
 
-    password = encode_password(raw_password) #Encrypt password
+    password = encode_password(raw_password)  # Encrypt password
 
-
-    user = {"first_name": first_name, "last_name": last_name, "age": age ,"email": email, "password": password}
-
+    user = {
+        "first_name": first_name,
+        "last_name": last_name,
+        "age": age,
+        "email": email,
+        "password": password
+    }
 
     # Load existing users
     if os.path.exists(user_db):
@@ -40,6 +47,3 @@ def add_user(first_name, last_name, age, email, raw_password, path=user_db):
         json.dump(users, f, indent=4)
 
     print("User added successfully!")
-
-
-

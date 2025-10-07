@@ -7,31 +7,36 @@
     <link rel="stylesheet" href="{% static 'css/add_user.css' %}" />
   </head>
   <body>
-    <form method="POST" action="/submit/">
-      {% csrf_token %}
+    <div class="login-container">
+      <!-- Back arrow -->
+      <a href="/user_login/" class="back-arrow">&#8592; Back</a>
+
       <h1>User Registration</h1>
+      <form method="POST" action="/submit/">
+        {% csrf_token %}
 
-      <label>First Name</label>
-      <input type="text" name="first_name" placeholder="John" required />
+        <input
+          type="text"
+          name="first_name"
+          placeholder="First Name"
+          required
+        />
+        <input type="text" name="last_name" placeholder="Last Name" required />
+        <input type="number" name="age" placeholder="Age" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
 
-      <label>Last Name</label>
-      <input type="text" name="last_name" placeholder="Doe" required />
+        <input type="submit" value="Submit" />
+      </form>
 
-      <label>Age</label>
-      <input type="number" name="age" placeholder="30" required />
-
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="john@example.com"
-        required
-      />
-
-      <label>Password</label>
-      <input type="password" name="password" placeholder="••••••••" required />
-
-      <input type="submit" value="Submit" />
-    </form>
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
   </body>
 </html>
