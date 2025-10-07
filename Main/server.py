@@ -8,12 +8,14 @@ from django.urls import path
 from django.core.management import execute_from_command_line
 from django.template import engines
 from django.views.decorators.csrf import csrf_exempt
+from backend.view_users import view_users_page
 
 # Backend functions
 from backend.user import add_user
 from backend.add_admin import add_admin
 from backend.remove_users import remove_users_page, remove_user
 from backend.remove_admins import remove_admins_page, remove_admin
+from backend.view_admins import view_admins_page
 
 # --- Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Points to Main/
@@ -149,6 +151,9 @@ urlpatterns = [
     path('remove_user/', remove_user),
     path('remove_admins/', remove_admins_page),
     path('remove_admin/', remove_admin),
+    path('view_users/', view_users_page),
+    path('view_admins/', view_admins_page),
+
 ]
 
 # --- Run Server ---

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>All Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/view_users.css' %}" />
+  </head>
+  <body>
+    <div class="login-container">
+      <a href="/admin_portal/" class="back-arrow">&#8592; Back</a>
+      <h1>All Users</h1>
+
+      {% if users %}
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Age</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.age }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="error">No users found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
