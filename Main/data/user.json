@@ -1,23 +1,9 @@
 [
-  {
-    "first_name": "Test",
-    "last_name": "Ben",
-    "age": "122",
-    "email": "BEN@GMail.com",
-    "password": "UGFzc3dvcmQ="
-  },
-  {
-    "first_name": "Ben",
-    "last_name": "Foster",
-    "age": "23",
-    "email": "Test@gmail.com",
-    "password": "dGVzdA=="
-  },
-  {
-    "first_name": "Admin",
-    "last_name": "Boss",
-    "age": "23",
-    "email": "ben@test.com",
-    "password": "cGFzc3dvcmQ="
-  }
+    {
+        "first_name": "Admin",
+        "last_name": "Boss",
+        "age": "23",
+        "email": "ben@test.com",
+        "password": "cGFzc3dvcmQ="
+    }
 ]

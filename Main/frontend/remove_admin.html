@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remove Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_user.css' %}" />
+    <script>
+      function confirmRemoval() {
+        return confirm("Are you sure you want to remove this admin?");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <a href="/admin_portal/" class="back-arrow">&#8592; Back</a>
+      <h1>Remove Admin</h1>
+
+      <form
+        method="POST"
+        action="/remove_admin/"
+        onsubmit="return confirmRemoval();"
+      >
+        {% csrf_token %}
+        <select name="email" required>
+          <option value="" selected disabled>-- Select Admin --</option>
+          {% for email in emails %}
+          <option value="{{ email }}">{{ email }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Remove" />
+      </form>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
