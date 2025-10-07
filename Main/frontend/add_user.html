@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_user.css' %}" />
+  </head>
+  <body>
+    <form method="POST" action="/submit/">
+      {% csrf_token %}
+      <h1>User Registration</h1>
+
+      <label>First Name</label>
+      <input type="text" name="first_name" placeholder="John" required />
+
+      <label>Last Name</label>
+      <input type="text" name="last_name" placeholder="Doe" required />
+
+      <label>Age</label>
+      <input type="number" name="age" placeholder="30" required />
+
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="john@example.com"
+        required
+      />
+
+      <label>Password</label>
+      <input type="password" name="password" placeholder="••••••••" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

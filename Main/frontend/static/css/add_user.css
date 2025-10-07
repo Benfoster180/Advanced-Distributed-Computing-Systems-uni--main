@@ -1,0 +1,94 @@
+/* Full-page background and centering */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background: linear-gradient(135deg, #e2e2e2, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+/* Card wrapper */
+form {
+  background: #fff;
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Page title */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #222;
+}
+
+/* Labels */
+label {
+  display: block;
+  text-align: left;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Inputs with "wall" padding sides */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+/* Input focus effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.2);
+  background-color: #fff;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+  width: 100%;
+  padding: 16px 0;
+  background-color: #007aff;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* Optional: subtle spacing around the form card */
+@media (max-width: 500px) {
+  form {
+    padding: 40px 20px;
+    max-width: 90%;
+  }
+}
