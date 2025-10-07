@@ -1,1 +1,39 @@
-<h1>Admin Portal</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/admin_portal.css' %}" />
+  </head>
+  <body>
+    <div class="portal-container">
+      <!-- Back arrow -->
+      <a href="/" class="back-arrow">&#8592; Home</a>
+
+      <h1>Admin Portal</h1>
+
+      <!-- User/Admin Management -->
+      <div class="section">
+        <h2>Management</h2>
+        <div class="buttons">
+          <a href="/add_admin/"><button>Add Admin</button></a>
+          <a href="/add_user/"><button>Add User</button></a>
+          <a href="/remove_users/"><button>Remove Account</button></a>
+          <a href="/remove_admins/"><button>Remove Admin</button></a>
+        </div>
+      </div>
+
+      <!-- Business Operations -->
+      <div class="section">
+        <h2>Operations</h2>
+        <div class="buttons">
+          <a href="/add_stock/"><button>Add Stock</button></a>
+          <a href="/view_customers/"><button>See Customers DB</button></a>
+          <a href="/view_admins/"><button>See Admin DB</button></a>
+          <a href="/invoices/"><button>Invoices</button></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

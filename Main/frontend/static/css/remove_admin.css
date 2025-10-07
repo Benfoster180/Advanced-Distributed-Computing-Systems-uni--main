@@ -19,10 +19,10 @@ body {
 /* Centered container */
 .login-container {
   background-color: #1f1f1f;
-  padding: 40px 50px;
+  padding: 50px 60px;
   border-radius: 15px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
-  width: 350px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+  width: 400px;
   text-align: center;
   position: relative;
 }
@@ -50,23 +50,50 @@ body {
   letter-spacing: 1px;
 }
 
-/* Input fields */
-.login-container input {
+/* Dropdown select */
+.login-container select {
   width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
+  padding: 14px 16px;
+  margin-bottom: 25px;
   border: none;
   border-radius: 8px;
   background-color: #2b2b2b;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+
+  /* Remove native arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpolygon points='0,0 12,0 6,8' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 8px;
+}
+
+.login-container select option[disabled] {
+  color: #aaa;
+}
+
+.login-container select:hover {
+  background-color: #3a3a3a;
+}
+
+.login-container select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #e50914 inset;
 }
 
 /* Submit button */
 .login-container input[type="submit"],
 .login-container button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
   border-radius: 8px;
   background-color: #e50914;
@@ -84,6 +111,6 @@ body {
 /* Error message */
 .error {
   color: #ff4d4d;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 14px;
 }
