@@ -11,6 +11,13 @@
 
       <h1>Welcome, {{ user.first_name|default:"Guest" }}!</h1>
 
+      <!-- Basket Button -->
+      <div class="basket-container">
+        <button id="basket-btn">
+          🛒 Basket <span id="basket-count">0</span>
+        </button>
+      </div>
+
       <div id="game-section">
         {% for platform, platform_games in platforms.items %}
         <div class="platform-section">
@@ -46,6 +53,8 @@
     </div>
 
     <script>
+      const basketCount = document.getElementById("basket-count");
+
       async function addToBasket(name, price) {
         try {
           await fetch("/api/add_to_basket/", {
@@ -53,11 +62,27 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, price }),
           });
-          alert(`${name} added to basket!`);
+          updateBasketCount();
         } catch (err) {
           console.error("Failed to add to basket", err);
         }
       }
+
+      async function updateBasketCount() {
+        try {
+          const res = await fetch("/api/get_basket_count/");
+          const data = await res.json();
+          basketCount.textContent = data.count;
+        } catch (err) {
+          console.error("Failed to update basket count", err);
+        }
+      }
+
+      document.getElementById("basket-btn").addEventListener("click", () => {
+        window.location.href = "/checkout/";
+      });
+
+      updateBasketCount();
     </script>
   </body>
 </html>

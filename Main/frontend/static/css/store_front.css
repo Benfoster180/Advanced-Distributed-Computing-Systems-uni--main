@@ -155,3 +155,40 @@ button:hover {
   border-radius: 6px;
   font-weight: bold;
 }
+
+..basket-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+#basket-btn {
+  position: relative;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#basket-btn:hover {
+  background-color: #005bb5;
+}
+
+#basket-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: bold;
+}

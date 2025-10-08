@@ -9,6 +9,7 @@ from django.core.management import execute_from_command_line
 from django.template import engines
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from django.http import JsonResponse
 
 # --- Import backend functions ---
 from backend.user import add_user
@@ -52,6 +53,23 @@ if not settings.configured:
 django.setup()
 
 # --- Helper Functions ---
+
+def add_to_basket(request):
+    if request.method == "POST":
+        import json
+        data = json.loads(request.body)
+        BASKET.append(data)
+        return JsonResponse({"success": True, "count": len(BASKET)})
+
+# API to get basket count
+def get_basket_count(request):
+    return JsonResponse({"count": len(BASKET)})
+
+# Checkout page
+def checkout_page(request):
+    return render(request, "checkout.html", {"basket": BASKET})
+
+
 def decrypt_password(password):
     decoded_bytes = base64.b64decode(password)
     return decoded_bytes.decode("utf-8")
@@ -227,6 +245,10 @@ urlpatterns = [
     path("submit_game/", submit_game),
     path("remove_stock/", remove_stock_page),
     path("submit_remove_stock/", remove_stock),
+    path("store_front/", store_front),
+    path("api/add_to_basket/", add_to_basket,),
+    path("api/get_basket_count/", get_basket_count),
+    path("checkout/", checkout_page),
 ]
 
 # --- Run Server ---
