@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "game_name": "A Life time of debt",
+        "type": "Family",
+        "age_rating": 3,
+        "platform": "Nintendo Switch",
+        "price_per_day": 60,
+        "cover_url": "https://laughingsquid.com/wp-content/uploads/2014/06/10356274_1495919333955787_4236314365118489752_n.jpg",
+        "stock": 25
+    }
+]
