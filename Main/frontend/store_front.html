@@ -1,1 +1,63 @@
-<h1>Store front</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Store Front</title>
+    <link rel="stylesheet" href="/static/css/store_front.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="back-arrow">&#8592; Logout</a>
+
+      <h1>Welcome, {{ user.first_name|default:"Guest" }}!</h1>
+
+      <div id="game-section">
+        {% for platform, platform_games in platforms.items %}
+        <div class="platform-section">
+          <h2>{{ platform }}</h2>
+          <div class="carousel">
+            {% for game in platform_games %}
+            <div
+              class="game-card {% if game.restricted %}restricted{% endif %}"
+            >
+              <img src="{{ game.cover_url }}" alt="{{ game.game_name }}" />
+              <div class="info">
+                <h3>{{ game.game_name }}</h3>
+                <p>Type: {{ game.type }}</p>
+                <p>Age Rating: {{ game.age_rating }}+</p>
+                <p>Price: ${{ game.price_per_day }}/day</p>
+                <p>Stock: {{ game.stock }}</p>
+                {% if not game.restricted %}
+                <button
+                  onclick="addToBasket('{{ game.game_name }}', {{ game.price_per_day }})"
+                >
+                  Add to Basket
+                </button>
+                {% else %}
+                <div class="locked">Restricted</div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script>
+      async function addToBasket(name, price) {
+        try {
+          await fetch("/api/add_to_basket/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, price }),
+          });
+          alert(`${name} added to basket!`);
+        } catch (err) {
+          console.error("Failed to add to basket", err);
+        }
+      }
+    </script>
+  </body>
+</html>

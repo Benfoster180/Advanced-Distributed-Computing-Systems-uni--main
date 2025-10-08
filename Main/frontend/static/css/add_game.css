@@ -1,0 +1,94 @@
+/* Reset basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* Full screen background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #141414, #1c1c1c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Centered container */
+.login-container {
+  background-color: #1f1f1f;
+  padding: 50px 60px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+  width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+/* Back arrow */
+.back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-arrow:hover {
+  color: #e50914;
+}
+
+/* Title */
+.login-container h1 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+/* Inputs & select */
+.login-container input,
+.login-container select {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.login-container input:focus,
+.login-container select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #e50914 inset;
+}
+
+.login-container select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpolygon points='0,0 12,0 6,8' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 8px;
+}
+
+/* Submit button */
+.login-container input[type="submit"] {
+  background-color: #e50914;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-container input[type="submit"]:hover {
+  background-color: #b00710;
+}

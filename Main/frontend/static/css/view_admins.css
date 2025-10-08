@@ -1,0 +1,108 @@
+/* Reset basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* Full screen dark background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #141414, #1c1c1c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* Main container */
+.login-container {
+  background-color: #1f1f1f;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+  width: 80%;
+  max-width: 900px;
+  text-align: center;
+  position: relative;
+}
+
+/* Back arrow */
+.back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-arrow:hover {
+  color: #e50914;
+}
+
+/* Title */
+.login-container h1 {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+/* Table container */
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 8px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #e50914;
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+td {
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+}
+
+tr:hover td {
+  background-color: #3a3a3a;
+}
+
+/* Error / empty message */
+.error {
+  color: #ff4d4d;
+  margin-top: 15px;
+  font-size: 14px;
+}

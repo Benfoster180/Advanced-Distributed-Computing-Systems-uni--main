@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remove Stock</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/remove_stock.css' %}" />
+  </head>
+  <body>
+    <div class="login-container">
+      <a href="/admin_portal/" class="back-arrow">&#8592; Back</a>
+      <h1>Remove Stock</h1>
+
+      <form method="POST" action="/submit_remove_stock/">
+        {% csrf_token %}
+        <select id="gameSelect" name="game_name" required>
+          <option value="" selected disabled>-- Select Game --</option>
+          {% for game in games %}
+          <option value="{{ game.game_name }}" data-stock="{{ game.stock }}">
+            {{ game.game_name }}
+          </option>
+          {% endfor %}
+        </select>
+
+        <label
+          id="stockLabel"
+          style="color: #fff; display: block; margin-bottom: 10px"
+        >
+          Stock: N/A
+        </label>
+
+        <input
+          type="number"
+          name="quantity"
+          id="quantityInput"
+          placeholder="Quantity to remove"
+          min="1"
+          required
+        />
+
+        <input type="submit" value="Remove" />
+      </form>
+    </div>
+
+    <script>
+      const select = document.getElementById("gameSelect");
+      const stockLabel = document.getElementById("stockLabel");
+      const quantityInput = document.getElementById("quantityInput");
+
+      select.addEventListener("change", function () {
+        const selected = this.options[this.selectedIndex];
+        const stock = selected.getAttribute("data-stock");
+        if (stock) {
+          stockLabel.textContent = `Stock: ${stock}`;
+          quantityInput.max = stock;
+        } else {
+          stockLabel.textContent = "Stock: N/A";
+          quantityInput.removeAttribute("max");
+        }
+      });
+
+      quantityInput.addEventListener("input", function () {
+        const max = parseInt(this.max || 0);
+        if (max && parseInt(this.value) > max) {
+          this.value = max;
+        }
+      });
+    </script>
+  </body>
+</html>
